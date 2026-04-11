@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vapoursynth-dghdrtosdr"
+version = "0.0.0"  # overwritten by scripts/build_wheel.py at build time
+description = "VapourSynth plugin to convert HDR10 PQ/HLG to SDR (Windows x64, by Donald A. Graft)"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "LicenseRef-DGHDRtoSDR"
+license-files = ["build_payload/LICENSE*"]
+keywords = ["vapoursynth", "hdr", "sdr", "hdr10", "pq", "hlg", "tonemap", "cuda"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Plugins",
+    "Intended Audience :: End Users/Desktop",
+    "Natural Language :: English",
+    "Operating System :: Microsoft :: Windows",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Video :: Conversion",
+]
+dependencies = ["VapourSynth>=74"]
+
+[project.urls]
+Homepage = "https://rationalqm.us/hdr/"
+Repository = "https://github.com/theChaosCoder/vapoursynth-dghdrtosdr"
+Issues = "https://www.rationalqm.us/board/"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vapoursynth_dghdrtosdr"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"build_payload" = "vapoursynth_dghdrtosdr"
