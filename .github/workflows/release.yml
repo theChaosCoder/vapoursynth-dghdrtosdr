@@ -6,7 +6,7 @@ on:
         description: "Upstream version (e.g. 1.17)"
         required: true
       post:
-        description: "Post-release suffix (e.g. 1.17.post1)"
+        description: "Post-release suffix (2 for  1.17.post2)"
         required: false
         default: ""
 
