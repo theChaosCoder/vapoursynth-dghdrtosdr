@@ -4,6 +4,8 @@ import os, re, shutil, subprocess, sys, urllib.request
 from pathlib import Path
 
 VERSION = os.environ["UPSTREAM_VERSION"]  # "1.16"
+POST = os.environ.get("POST", "").strip()  # "1.16.post1"
+WHEEL_VERSION = f"{VERSION}.post{POST}" if POST else VERSION
 URL = f"https://rationalqm.us/hdr/DGHDRtoSDR_{VERSION}.rar"
 ROOT = Path(__file__).resolve().parent.parent
 PAYLOAD = ROOT / "build_payload"
@@ -40,7 +42,7 @@ if not dlls:
 # Version in pyproject.toml setzen
 pyproject = ROOT / "pyproject.toml"
 text = pyproject.read_text()
-text = re.sub(r'^version = "[^"]*"', f'version = "{VERSION}"', text, count=1, flags=re.M)
+text = re.sub(r'^version = "[^"]*"', f'version = "{WHEEL_VERSION}"', text, count=1, flags=re.M)
 pyproject.write_text(text)
 
 # Build wheel + tag as win_amd64
