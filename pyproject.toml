@@ -28,7 +28,7 @@ Repository = "https://github.com/theChaosCoder/vapoursynth-dghdrtosdr"
 Issues = "https://www.rationalqm.us/board/"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/vapoursynth_dghdrtosdr"]
+bypass-selection = true
 
 [tool.hatch.build.targets.wheel.force-include]
-"build_payload" = "vapoursynth_dghdrtosdr"
+"build_payload/DGHDRtoSDR.dll" = "vapoursynth/plugins/DGHDRtoSDR.dll"
