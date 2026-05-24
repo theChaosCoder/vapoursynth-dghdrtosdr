@@ -3,8 +3,12 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Upstream version (e.g. 1.16)"
+        description: "Upstream version (e.g. 1.17)"
         required: true
+      post:
+        description: "Post-release suffix (e.g. 1.17.post1)"
+        required: false
+        default: ""
 
 permissions:
   id-token: write  # required for Trusted Publishing
@@ -26,6 +30,7 @@ jobs:
       - name: Build wheel
         env:
           UPSTREAM_VERSION: ${{ inputs.version }}
+          POST: ${{ inputs.post }}
         run: python scripts/build_wheel.py
 
       - name: Validate artifact
